@@ -20,11 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4eeda348-3b87-4705-b899-4f25da594afc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ExtractEntities.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/ConceptDictionary.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/restricted_druglist.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ExtractADR.py" beforeDir="false" afterPath="$PROJECT_DIR$/ExtractADR.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/default_names_dict.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/lvl_up_dict.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/ExampleDataOutputNER.tsv" beforeDir="false" afterPath="$PROJECT_DIR$/data/ExampleDataOutputNER.tsv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -84,9 +84,9 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2543" y="229" width="672" height="678" key="search.everywhere.popup" timestamp="1617793172750">
+    <state x="2543" y="229" width="672" height="678" key="search.everywhere.popup" timestamp="1617803541173">
       <screen x="1920" y="4" width="1920" height="1040" />
     </state>
-    <state x="2543" y="229" width="672" height="678" key="search.everywhere.popup/0.0.1536.824/1920.4.1920.1040@1920.4.1920.1040" timestamp="1617793172750" />
+    <state x="2543" y="229" width="672" height="678" key="search.everywhere.popup/0.0.1536.824/1920.4.1920.1040@1920.4.1920.1040" timestamp="1617803541173" />
   </component>
 </project>

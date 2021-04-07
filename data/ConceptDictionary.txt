@@ -1,0 +1,20 @@
+4002||headache
+4002||cephalgia
+4002||pain in head
+4002||ha headache
+4002||cephalodynia
+4002||head pain
+4002||cephalalgia
+7003||sore throat
+7003||pain in the pharynx
+7003||throat discomfort
+7003||throat soreness
+7003||throat pain
+7004||alopecia
+7004||hair loss disorder
+7004||bald
+7004||baldness
+7007||nausea
+7007||nauseated
+7007||observation of nausea
+7007||nauseous

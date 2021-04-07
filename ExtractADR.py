@@ -99,14 +99,14 @@ class ADRExtractor():
         return df
 
 
-    def main(self):
+    def main(self, df2):
         ## models running
 
         ## majority voting
-        alllbls = self.load_results(output_dir)
-        out = self.simple_majority_vote(alllbls)
-
-        df2 = pd.concat([df, pd.Series(out, name='tag')], axis=1)
+        # alllbls = self.load_results(output_dir)
+        # out = self.simple_majority_vote(alllbls)
+        #
+        # df2 = pd.concat([df, pd.Series(out, name='tag')], axis=1)
 
         ##extracting ADR phrases from the tags
         df3 = extract_from_tags(self, df2)
