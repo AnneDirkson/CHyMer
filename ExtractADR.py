@@ -73,11 +73,11 @@ class ADRExtractor():
         predlbls = list(df.tag)
         threadix = df.thread_id
         ix = df.post_id
-        nwtgs = self.looseI_toB(predlbls, tagtype = 'ADR')
-        print(nwtgs[0][0])
-        print(predlbls[0][0])
+        nwtgs = [self.looseI_toB(p, tagtype = 'ADR') for p in predlbls]
+        # print(nwtgs[0][0])
+        # print(predlbls[0][0])
         all_adr, all_tgs, all_ix, ent_ranges = EntityExtractor().main(words, nwtgs)
-        print(all_adr)
+        # print(all_adr)
 
         adrlst = []
         nwthreadix = []

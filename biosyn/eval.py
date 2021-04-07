@@ -64,12 +64,13 @@ class RunNormalizer():
         return dataset
 
     def main(self, model_dir, dictionary_path, data_dir, use_cuda, topk = 10):
-        init_logging()
+        self.init_logging()
         # print(args)
+        # print(use_cuda)
 
         # load dictionary and data
-        eval_dictionary = load_dictionary(dictionary_path=dictionary_path)
-        eval_queries = load_queries(
+        eval_dictionary = self.load_dictionary(dictionary_path=dictionary_path)
+        eval_queries = self.load_queries(
             data_dir=data_dir,
             filter_composite=False,
             filter_duplicate=True

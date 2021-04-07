@@ -19,8 +19,8 @@ class ADRNormalizer():
         normalized_txt = []
         removed = ['/', '-', "'", '&', '(', '\\', ',', '%', '[UNK]']
         for i in df.ent:
-            i2 = i.split(" ")
-            i3 = [x for x in i2 if x not in removed]
+            # i2 = i.split(" ")
+            i3 = [x for x in i if x not in removed]
             i4 = " ".join(i3)
 
             normalized_txt.append(i4)

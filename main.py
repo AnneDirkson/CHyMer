@@ -60,7 +60,8 @@ class RunPipeline():
         # print(orig_data.words.iloc[0])
 
         orig_data = self.load_obj('./data/ExampleDataOutputNER')
-        print(orig_data.head())
+        # print(orig_data.head())
+        # print(orig_data.tag.iloc[0][7])
         norm_model_dir = args.norm_model_dir
 
         ##preprocess?
@@ -68,7 +69,7 @@ class RunPipeline():
         ### run extraction
 
         df = ADRExtractor().main(orig_data)
-        print(df.head())
+        # print(df.head())
         ##run normalization
 
         if args.use_cuda:
@@ -76,7 +77,7 @@ class RunPipeline():
         else:
             u = False
 
-        NormalizedResults = ADRNormalizer().main(df, output_dir1 = './output/Unprocessed/', output_dir2 = './output/Processed/', model_dir= norm_model_dir, dictionary_path= './data/ConceptDictionary.txt', use_cuda=u)
+        NormalizedResults = ADRNormalizer().main(df, output_dir1 = 'output/Unprocessed/', output_dir2 = 'output/Processed/', model_dir= norm_model_dir, dictionary_path= './data/ConceptDictionary.txt', use_cuda=u)
 
         df2 = self.get_messages_of_ADR(self, NormalizedResults, orig_data)
 

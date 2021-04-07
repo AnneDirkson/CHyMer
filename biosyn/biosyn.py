@@ -85,7 +85,7 @@ class BioSyn(object):
         torch.save(self.sparse_weight, sparse_weight_file)
         logging.info("Sparse weight saved in {}".format(sparse_weight_file))
 
-    def load_model(self, path, max_length=25, use_cuda=True):
+    def load_model(self, path, max_length=25, use_cuda=False):
         self.load_bert(path, max_length, use_cuda)
         self.load_sparse_encoder(path)
         self.load_sparse_weight(path)

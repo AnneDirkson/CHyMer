@@ -1,8 +1,7 @@
 
 import re
-
+import glob
 from tqdm import tqdm
-
 
 from biosyn.preprocesser import TextPreprocess
 
@@ -200,16 +199,22 @@ class QueryPreprocess():
 #
 #     args = parser.parse_args()
 #     return args
-
+    def write_concept(self, path, concept):
+        with open(path, 'w') as f:
+            for line in concept:
+                line = '||'.join(line) + '\n'
+                f.write(line)
 
     def main(self, input_dir, output_dir):
         # input_dir, output_dir = Path(args.input_dir), Path(args.output_dir)
         # dataset_name = input_dir.parent.stem
         # output_dir.mkdir(exist_ok=True)
-        input_files = input_dir.iterdir()
-        input_files = filter(lambda path: path.suffix == '.concept', input_files)
-        input_files = map(lambda path: path.stem, input_files)
-        input_files = sorted(input_files)
+        # print(input_dir)
+        # input_dir = glob.glob(input_dir)
+        # input_files = input_dir.iterdir()
+        # input_files = filter(lambda path: path.suffix == '.concept', input_files)
+        # input_files = map(lambda path: path.stem, input_files)
+        # input_files = sorted(input_files)
 
         cui_set = None
 
@@ -224,33 +229,34 @@ class QueryPreprocess():
         )
 
         num_queries = 0
-        for input_file in tqdm(input_files):
-            concept_file = input_dir/(input_file+'.concept')
-            txt_file = input_dir/(input_file+'.txt')
-            output_path = output_dir/(input_file+'.concept')
+        concept_file = input_dir + 'entities.concept'
+            # tqdm(input_files):
+            # concept_file = input_dir/(input_file+'.concept')
+            # txt_file = input_dir/(input_file+'.txt')
+        output_path = output_dir + 'entities.concept'
 
-            concept = self.parse_concept(concept_file)
+        concept = self.parse_concept(concept_file)
 
-            # apply abbreviation resolve
-            # abbr_dict = abbr_resolver.resolve(txt_file)
-            # concept = apply_abbr_dict(concept, abbr_dict)
+        # apply abbreviation resolve
+        # abbr_dict = abbr_resolver.resolve(txt_file)
+        # concept = apply_abbr_dict(concept, abbr_dict)
 
-            # apply composition resolve
-            # if args.resolve_composites:
+        # apply composition resolve
+        # if args.resolve_composites:
 
-            concept = self.apply_composite_resolve(concept)
+        concept = self.apply_composite_resolve(concept)
 
-            # apply basic preprocess
-            concept = self.apply_basic_preprocess(concept, text_preprocessor)
+        # apply basic preprocess
+        concept = self.apply_basic_preprocess(concept, text_preprocessor)
 
-            # remove cuiless
-            # if args.remove_cuiless:
-            #     if cui_set is None:
-            #         dict_path = args.dictionary_path
-            #         cui_set = load_cui_set(dict_path)
-            #     concept = filter_cuiless(concept, cui_set)
-            num_queries += len(concept)
-            write_concept(output_path, concept)
+        # remove cuiless
+        # if args.remove_cuiless:
+        #     if cui_set is None:
+        #         dict_path = args.dictionary_path
+        #         cui_set = load_cui_set(dict_path)
+        #     concept = filter_cuiless(concept, cui_set)
+        num_queries += len(concept)
+        self.write_concept(output_path, concept)
 
         print("total number of queries={}".format(num_queries))
 
