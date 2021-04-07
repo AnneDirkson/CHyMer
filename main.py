@@ -49,22 +49,23 @@ outb = DrugLinker().main(df3, drugdf, restricted = True, possible_drugs = restri
 NormalizedResults = ADRNormalizer().main(input_dir, output_dir, model_dir, dictionary_path)
 
 ##syn_cui_text is the original synonym the term was linked to
-DefaultName = []
-LvlUpCUI = []
-LvlUpName = []
+##cannot share files below due to SNOMED CT license
+# DefaultName = []
+# LvlUpCUI = []
+# LvlUpName = []
+#
+# for a in NormalizedResults.cui:
+#      DefaultName.append(self.default_names[a])
+#      LvlUpCUI.append(self.lvl_up_dict[a])
+# for b in LvlUpCUI:
+#     LvlUpName.append(self.default_names[b])
 
-for a in NormalizedResults.cui:
-     DefaultName.append(self.default_names[a])
-     LvlUpCUI.append(self.lvl_up_dict[a])
-for b in LvlUpCUI:
-    LvlUpName.append(self.default_names[b])
-
-NormalizedResults2 = pd.concat([NormalizedResults, pd.Series(DefaultName, name='cui_txt'), pd.Series(LvlUpCUI, name = 'lvl_up_cui'), pd.Series(LvlUpName, name= 'lvl_up_name')], axis=1)
+# NormalizedResults2 = pd.concat([NormalizedResults, pd.Series(DefaultName, name='cui_txt'), pd.Series(LvlUpCUI, name = 'lvl_up_cui'), pd.Series(LvlUpName, name= 'lvl_up_name')], axis=1)
 
 
 ##add messages
 
-
+get_messages_of_ADR(self, df, orig_data):
 
 
 
