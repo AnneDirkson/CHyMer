@@ -3,6 +3,7 @@
 
 from ExtractEntities import EntityExtractor
 from collections import Counter
+import pandas as pd
 
 class ADRExtractor():
 
@@ -68,12 +69,15 @@ class ADRExtractor():
         return nwtgs
 
     def extract_from_tags(self, df):
-        words = df.words
-        predlbls = df.tag
+        words = list(df.words)
+        predlbls = list(df.tag)
         threadix = df.thread_id
         ix = df.post_id
         nwtgs = self.looseI_toB(predlbls, tagtype = 'ADR')
-        all_adr, all_tgs, all_ix, ent_ranges = EntityExtractor().main(words, predlbls)
+        print(nwtgs[0][0])
+        print(predlbls[0][0])
+        all_adr, all_tgs, all_ix, ent_ranges = EntityExtractor().main(words, nwtgs)
+        print(all_adr)
 
         adrlst = []
         nwthreadix = []
@@ -109,5 +113,5 @@ class ADRExtractor():
         # df2 = pd.concat([df, pd.Series(out, name='tag')], axis=1)
 
         ##extracting ADR phrases from the tags
-        df3 = extract_from_tags(self, df2)
+        df3 = self.extract_from_tags(df2)
         return df3

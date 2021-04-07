@@ -3,7 +3,7 @@
 
 import pandas as pd
 
-class DrugLinker(self):
+class DrugLinker():
 
     def __init__(self):
         self.druglist = pd.read_csv('./data/fdadrugslist.txt', header = None)

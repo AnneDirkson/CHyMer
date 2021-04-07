@@ -61,9 +61,9 @@ class RunNormalizer():
             filter_composite=filter_composite,
             filter_duplicate=filter_duplicate
         )
-        return dataset.data
+        return dataset
 
-    def main(self, model_dir, dictionary_path, data_dir, use_cuda = True, topk = 10)
+    def main(self, model_dir, dictionary_path, data_dir, use_cuda, topk = 10):
         init_logging()
         # print(args)
 

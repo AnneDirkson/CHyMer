@@ -1,19 +1,11 @@
-# import argparse
-import os
-import re
-import subprocess
-from pathlib import Path
 
-import pandas as pd
+import re
+
 from tqdm import tqdm
 
-import pdb
+
 from biosyn.preprocesser import TextPreprocess
 
-# from biosyn import (
-#     Abbr_resolver,
-#     TextPreprocess
-# )
 
 class QueryPreprocess():
 
@@ -212,8 +204,8 @@ class QueryPreprocess():
 
     def main(self, input_dir, output_dir):
         # input_dir, output_dir = Path(args.input_dir), Path(args.output_dir)
-        dataset_name = input_dir.parent.stem
-        output_dir.mkdir(exist_ok=True)
+        # dataset_name = input_dir.parent.stem
+        # output_dir.mkdir(exist_ok=True)
         input_files = input_dir.iterdir()
         input_files = filter(lambda path: path.suffix == '.concept', input_files)
         input_files = map(lambda path: path.stem, input_files)

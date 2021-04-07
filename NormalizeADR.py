@@ -7,6 +7,7 @@
 
 from biosyn.query_preprocess_inference import QueryPreprocess
 from biosyn.eval import RunNormalizer
+import pandas as pd
 from collections import defaultdict
 
 class ADRNormalizer():
@@ -153,14 +154,14 @@ class ADRNormalizer():
         df3 = pd.concat([df2, pd.Series(normalized_cui, name='cui'), pd.Series(normalized_txt, name='syn_cui_text')], axis=1)
         return df3
 
-    def main(self, df, output_dir1, output_dir2, model_dir, dictionary_path):
+    def main(self, df, output_dir1, output_dir2, model_dir, dictionary_path, use_cuda):
 
         normalized_text = self.remove_UNK(df)
         self.reformat_data_fornorm(normalized_text, output_dir1)
         input_dir = output_dir1
         QueryPreprocess().main(input_dir, output_dir2)
         data_dir = output_dir2
-        results = RunNormalizer().main(model_dir, dictionary_path, data_dir, use_cuda = True, topk = 10)
+        results = RunNormalizer().main(model_dir, dictionary_path, data_dir, use_cuda, topk = 10)
         ##link normalization to original df with entities
 
         df = df.drop(['ent'])
