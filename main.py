@@ -59,16 +59,18 @@ class RunPipeline():
         #
         # print(orig_data.words.iloc[0])
 
-        orig_data = self.load_obj('./data/ExampleDataOutputNER')
-        # print(orig_data.head())
+        orig_data = self.load_obj(args.datapath)
+        print(orig_data.head())
         # print(orig_data.tag.iloc[0][7])
         norm_model_dir = args.norm_model_dir
+        ner_model_dir = args.ner_model_dir
 
         ##preprocess?
 
         ### run extraction
+        ner_outpath = './output/NER/'
 
-        df = ADRExtractor().main(orig_data)
+        # df = ADRExtractor().main(orig_data, ner_model_dir, ner_outpath)
         # print(df.head())
         ##run normalization
 
@@ -77,18 +79,18 @@ class RunPipeline():
         else:
             u = False
 
-        NormalizedResults = ADRNormalizer().main(df, output_dir1 = 'output/Unprocessed/', output_dir2 = 'output/Processed/', model_dir= norm_model_dir, dictionary_path= './data/ConceptDictionary.txt', use_cuda=u)
-
-        df2 = self.get_messages_of_ADR(self, NormalizedResults, orig_data)
-
-        if args.restricted_druglst:
-            restricted_list = pd.read_csv('./data/restricted_druglist.txt', header = None)
-
-            df3 = DrugLinker().main(df2, restricted = True, possible_drugs = restricted_list)
-        else:
-            df3 = DrugLinker().main(df2, restricted=False, possible_drugs=None)
-
-        df3.to_csv('./output/DrugLinkedADR.tsv', sep = '\t', index = False)
+        # NormalizedResults = ADRNormalizer().main(df, output_dir1 = 'output/Unprocessed/', output_dir2 = 'output/Processed/', model_dir= norm_model_dir, dictionary_path= './data/ConceptDictionary.txt', use_cuda=u)
+        #
+        # df2 = self.get_messages_of_ADR(self, NormalizedResults, orig_data)
+        #
+        # if args.restricted_druglst:
+        #     restricted_list = pd.read_csv('./data/restricted_druglist.txt', header = None)
+        #
+        #     df3 = DrugLinker().main(df2, restricted = True, possible_drugs = restricted_list)
+        # else:
+        #     df3 = DrugLinker().main(df2, restricted=False, possible_drugs=None)
+        #
+        # df3.to_csv('./output/DrugLinkedADR.tsv', sep = '\t', index = False)
 
 
 def parse_args():
@@ -98,6 +100,7 @@ def parse_args():
     parser = argparse.ArgumentParser(description='Extraction and normalization ADR')
 
     # Required
+    parser.add_argument('--ner_model_dir', required=True, help='Directory for NER predictors')
     parser.add_argument('--norm_model_dir', required=True, help='Directory for normalization model')
     # parser.add_argument('--dictionary_path', type=str, required=True, help='dictionary path')
     parser.add_argument('--datapath', type=str, required=True, help='data set to evaluate')

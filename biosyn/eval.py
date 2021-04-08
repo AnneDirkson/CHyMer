@@ -87,7 +87,7 @@ class RunNormalizer():
             eval_dictionary=eval_dictionary,
             eval_queries=eval_queries,
             topk=topk,
-            score_mode=args.score_mode
+            score_mode="hybrid"
         )
 
         LOGGER.info("acc@1={}".format(result_evalset['acc1']))

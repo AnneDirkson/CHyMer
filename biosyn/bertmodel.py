@@ -12,6 +12,7 @@ class BertModel(nn.Module):
     def __init__(self, path, config, use_cuda):
         logging.info("BertModel! use_cuda={}".format(use_cuda))
         super(BertModel, self).__init__()
+        # self.model = bm.from_pretrained(path)
         self.load_pretrained(path, config) # load pretrained
         self.embed_dim = 768
         self.use_cuda = use_cuda
@@ -19,7 +20,7 @@ class BertModel(nn.Module):
             self.model = self.model.cuda()
 
     def load_pretrained(self, path, config):
-        state_dict = torch.load(os.path.join(path, "pytorch_model.bin"))
+        state_dict = torch.load(os.path.join(path, "pytorch_model.bin"), map_location= 'cpu')
         new_state_dict = OrderedDict()
         for k, v in state_dict.items():
             if k.startswith('bert.'):

@@ -12,7 +12,7 @@ from .bertmodel import BertModel
 from .rerankNet import RerankNet
 
 from transformers import (
-    BertConfig
+    BertConfig,
 )
 
 LOGGER = logging.getLogger()
@@ -88,15 +88,15 @@ class BioSyn(object):
     def load_model(self, path, max_length=25, use_cuda=False):
         self.load_bert(path, max_length, use_cuda)
         self.load_sparse_encoder(path)
-        self.load_sparse_weight(path)
+        self.load_sparse_weight(path, use_cuda)
         
         return self
 
     def load_bert(self, path, max_length, use_cuda):
-        
-        self.tokenizer = BertTokenizer(path=path, max_length=max_length)
+        # .from_pretrained
+        self.tokenizer = BertTokenizer(path, max_length=max_length)
         config = BertConfig.from_json_file(os.path.join(path, "config.json"))
-        self.encoder = BertModel(path=path, config=config, use_cuda=use_cuda) # dense encoder
+        self.encoder = BertModel(path, config=config, use_cuda=use_cuda) # dense encoder
 
         return self.encoder, self.tokenizer
 
@@ -105,9 +105,12 @@ class BioSyn(object):
 
         return self.sparse_encoder
 
-    def load_sparse_weight(self, path):
+    def load_sparse_weight(self, path, use_cuda):
         sparse_weight_file = os.path.join(path, 'sparse_weight.pt')
-        self.sparse_weight = torch.load(sparse_weight_file)
+        if use_cuda:
+            self.sparse_weight = torch.load(sparse_weight_file)
+        else:
+            self.sparse_weight = torch.load(sparse_weight_file, map_location = 'cpu')
 
         return self.sparse_weight
 
@@ -222,7 +225,13 @@ class BioSyn(object):
             for start in iterations:
                 end = min(start + batch_size, len(names))
                 batch = names[start:end]
+                # print(batch)
+                # print(names)
+                # b = batch.tolist()
+
                 batch_tokenized_names = self.tokenizer.transform(batch)
+                # print(batch_tokenized_names)
+                # .transform
                 batch_dense_embeds = self.encoder(batch_tokenized_names)
                 batch_dense_embeds = batch_dense_embeds.cpu().detach().numpy()
                 dense_embeds.append(batch_dense_embeds)

@@ -38,8 +38,8 @@ class EntityExtractor():
                 word = sent[num]
             except IndexError: 
                 print('Tags and sent are not equal')
-                print(len(s))
-                print(len(t))
+                print(len(sent))
+                print(len(tags))
 
 
             if a.endswith('ADR'):

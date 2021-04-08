@@ -20,17 +20,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4eeda348-3b87-4705-b899-4f25da594afc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/output/Processed/entities.concept" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/CHyMer.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/ExampleDataInput.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output/NER/.ipynb_checkpoints/Untitled-checkpoint.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output/NER/Untitled.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output/NER/lbls_seed1.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output/NER/lbls_seed128.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output/NER/lbls_seed16.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output/NER/lbls_seed2.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output/NER/lbls_seed256.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output/NER/lbls_seed32.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output/NER/lbls_seed4.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output/NER/lbls_seed512.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output/NER/lbls_seed64.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output/NER/lbls_seed8.pkl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ExtractADR.py" beforeDir="false" afterPath="$PROJECT_DIR$/ExtractADR.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NormalizeADR.py" beforeDir="false" afterPath="$PROJECT_DIR$/NormalizeADR.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ExtractEntities.py" beforeDir="false" afterPath="$PROJECT_DIR$/ExtractEntities.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biosyn/bertmodel.py" beforeDir="false" afterPath="$PROJECT_DIR$/biosyn/bertmodel.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biosyn/biosyn.py" beforeDir="false" afterPath="$PROJECT_DIR$/biosyn/biosyn.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biosyn/eval.py" beforeDir="false" afterPath="$PROJECT_DIR$/biosyn/eval.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biosyn/query_preprocess_inference.py" beforeDir="false" afterPath="$PROJECT_DIR$/biosyn/query_preprocess_inference.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/ExampleDataOutputNER.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/data/ExampleDataOutputNER.pkl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/ExampleDataOutputNER.tsv" beforeDir="false" afterPath="$PROJECT_DIR$/data/ExampleDataOutputNER.tsv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/Unprocessed/entities.concept" beforeDir="false" afterPath="$PROJECT_DIR$/output/Unprocessed/entities.concept" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +72,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="SvnConfiguration">
@@ -84,6 +98,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
