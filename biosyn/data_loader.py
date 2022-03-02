@@ -35,6 +35,8 @@ class QueryDataset(Dataset):
             filter_composite=filter_composite,
             filter_duplicate=filter_duplicate
         )
+    def __len__(self):
+        return len(self.data)
         
     def load_data(self, data_dir, filter_composite, filter_duplicate):
         """       

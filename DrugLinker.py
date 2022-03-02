@@ -2,19 +2,36 @@
 ##medication
 
 import pandas as pd
+import re
 
 class DrugLinker():
 
     def __init__(self):
         self.druglist = pd.read_csv('./data/fdadrugslist.txt', header = None)
+        self.WORD = '[A-Za-z0-9]+'
+        self.WORD2 = '[A-Za-z]+'
+        self.ONLYHYPHEN = '[-]+'
+        self.punclst = ["_", "%", '+', "&", "<", ">", ")", "(", "[", "]", ".", ",", "/", ";", ":", "!", "?", '"',
+                            "$", "'", '#', '-', "|", "~", "=", "`", "*"]
 
 
-    def extract_drug_data(self, words, threadix, ix):  ##input needs to be same as entity linker
+    def extract_drug_data(self, df):  ##input needs to be same as entity linker
         fdalst = self.druglist
+        fdalst.columns=['drugs']
+        # print(fdalst[:10])
+        nwfdalst = []
+        for i in fdalst.drugs:
 
-        nwfdalst = [i for i in fdalst if len(i) > 2]
+            if len(i) > 2:
+                nwfdalst.append(i)
+
+        # print(len(nwfdalst))
+
+        # nwfdalst = [i for i in fdalst if len(i) > 2]
 
         nwfdalst.extend(['avapritinib', 'ripretinib'])
+
+        #print(nwfdalst[:10])
 
         drugsnames = []
         threadixs = []
@@ -22,17 +39,26 @@ class DrugLinker():
         start = []
         end = []
 
-        for a, b, c in zip(words, threadix, ix):
+        for a, b, c in zip(df.message, df.thread_id, df.post_id):
             drugs = []
             s = []
             e = []
+            # print(a)
 
-            for num, j in enumerate(a):
-                if re.fullmatch(self.WORD2, j) != None:
-                    if j in nwfdalst:
-                        drugs.append(j)
-                        s.append(num)
-                        e.append(num)
+            try:
+                for num, j in enumerate(a):
+                # print(j)
+                    if re.fullmatch(self.WORD2, j) != None:
+                        # print(j.lower())
+                        if j.lower() in nwfdalst:
+                            # print(j.lower())
+                            drugs.append(j.lower())
+                            s.append(num)
+                            e.append(num)
+            except:
+                pass
+
+
 
             if drugs != []:
                 drugsnames.append(drugs)
@@ -126,7 +152,7 @@ class DrugLinker():
 
         return out, dist
 
-    def first_drug(self, data, aggdrugdf, possible_drugs=None,
+    def first_drug(self, data, drugdf, possible_drugs=None,
                    restricted=False):  ##only allow for drugs mentioned earlier
 
         out = []
@@ -171,12 +197,12 @@ class DrugLinker():
 
     def run_linking(self, data, drugdf, possible_drugs=None, restricted=False):
 
-        aggdrugdf = drugdf.groupby('thread_id').agg(list)
+        #aggdrugdf = drugdf.groupby('thread_id').agg(list)
 
-        aggdrugdf = aggdrugdf.reset_index()
+        #aggdrugdf = aggdrugdf.reset_index()
         #         init_out = initialize_UNK(data)
 
-        out1 = self.first_drug(data, aggdrugdf, possible_drugs=possible_drugs, restricted=restricted)
+        out1 = self.first_drug(data, drugdf, possible_drugs=possible_drugs, restricted=restricted)
         out2, dist = self.nearest_drug_samepost(data, drugdf, possible_drugs=possible_drugs,
                                                 restricted=restricted, only_before=True)
 
@@ -195,20 +221,15 @@ class DrugLinker():
 
         return out3
 
-    def main(self, df, dfdrugs, restricted=False, possible_drugs=None):
-        out = self.run_linking(df, dfdrugs, possible_drugs, restricted)
-
-        nwdf = pd.concat([df, pd.Series(out, name='linked_drug')], axis=1)
-
-        return nwdf
-
 
     def main(self, df, restricted=False, possible_drugs=None):
-        words = df.word
-        threadix = df.thread_num
-        ix = df.ix
-        drugdf = self.extract_drug_data(words, threadix, ix)
+        # words = df.message)
+        # threadix = df.thread_id
+        # ix = df.post_id
+        drugdf = self.extract_drug_data(df)
+        # print(drugdf)
         out = self.run_linking(df, drugdf, possible_drugs, restricted)
+        # print(out)
 
         nwdf = pd.concat([df, pd.Series(out, name='linked_drug')], axis=1)
 

@@ -1,7 +1,7 @@
 import logging
 import os
 import collections
-from .bert_utils import (
+from bert_utils import (
     BasicTokenizer, 
     WordpieceTokenizer
 )

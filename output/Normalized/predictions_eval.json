@@ -1,0 +1,354 @@
+{
+  "queries": [
+    {
+      "mentions": [
+        {
+          "mention": "nauseous",
+          "golden_cui": "-1",
+          "candidates": [
+            {
+              "name": "nauseous",
+              "cui": "7007",
+              "sim": "351.3043",
+              "label": 0
+            },
+            {
+              "name": "nausea",
+              "cui": "7007",
+              "sim": "340.56097",
+              "label": 0
+            },
+            {
+              "name": "nauseated",
+              "cui": "7007",
+              "sim": "339.29022",
+              "label": 0
+            },
+            {
+              "name": "observation of nausea",
+              "cui": "7007",
+              "sim": "337.3184",
+              "label": 0
+            },
+            {
+              "name": "headache",
+              "cui": "4002",
+              "sim": "331.44067",
+              "label": 0
+            },
+            {
+              "name": "ha headache",
+              "cui": "4002",
+              "sim": "330.74863",
+              "label": 0
+            },
+            {
+              "name": "head pain",
+              "cui": "4002",
+              "sim": "329.84354",
+              "label": 0
+            },
+            {
+              "name": "pain in head",
+              "cui": "4002",
+              "sim": "327.9651",
+              "label": 0
+            },
+            {
+              "name": "pain in the pharynx",
+              "cui": "7003",
+              "sim": "325.31616",
+              "label": 0
+            },
+            {
+              "name": "cephalalgia",
+              "cui": "4002",
+              "sim": "324.50974",
+              "label": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "mentions": [
+        {
+          "mention": "throat ache",
+          "golden_cui": "-1",
+          "candidates": [
+            {
+              "name": "throat pain",
+              "cui": "7003",
+              "sim": "343.08212",
+              "label": 0
+            },
+            {
+              "name": "throat soreness",
+              "cui": "7003",
+              "sim": "340.95224",
+              "label": 0
+            },
+            {
+              "name": "sore throat",
+              "cui": "7003",
+              "sim": "339.99786",
+              "label": 0
+            },
+            {
+              "name": "throat discomfort",
+              "cui": "7003",
+              "sim": "338.34744",
+              "label": 0
+            },
+            {
+              "name": "headache",
+              "cui": "4002",
+              "sim": "335.33206",
+              "label": 0
+            },
+            {
+              "name": "pain in the pharynx",
+              "cui": "7003",
+              "sim": "333.41727",
+              "label": 0
+            },
+            {
+              "name": "ha headache",
+              "cui": "4002",
+              "sim": "330.7619",
+              "label": 0
+            },
+            {
+              "name": "head pain",
+              "cui": "4002",
+              "sim": "330.07135",
+              "label": 0
+            },
+            {
+              "name": "nausea",
+              "cui": "7007",
+              "sim": "329.26828",
+              "label": 0
+            },
+            {
+              "name": "nauseated",
+              "cui": "7007",
+              "sim": "328.45035",
+              "label": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "mentions": [
+        {
+          "mention": "headache",
+          "golden_cui": "-1",
+          "candidates": [
+            {
+              "name": "headache",
+              "cui": "4002",
+              "sim": "353.21802",
+              "label": 0
+            },
+            {
+              "name": "ha headache",
+              "cui": "4002",
+              "sim": "348.74377",
+              "label": 0
+            },
+            {
+              "name": "head pain",
+              "cui": "4002",
+              "sim": "342.59604",
+              "label": 0
+            },
+            {
+              "name": "pain in head",
+              "cui": "4002",
+              "sim": "338.02753",
+              "label": 0
+            },
+            {
+              "name": "nausea",
+              "cui": "7007",
+              "sim": "337.74777",
+              "label": 0
+            },
+            {
+              "name": "nauseated",
+              "cui": "7007",
+              "sim": "334.98694",
+              "label": 0
+            },
+            {
+              "name": "observation of nausea",
+              "cui": "7007",
+              "sim": "334.51236",
+              "label": 0
+            },
+            {
+              "name": "nauseous",
+              "cui": "7007",
+              "sim": "331.44067",
+              "label": 0
+            },
+            {
+              "name": "pain in the pharynx",
+              "cui": "7003",
+              "sim": "331.3347",
+              "label": 0
+            },
+            {
+              "name": "throat pain",
+              "cui": "7003",
+              "sim": "331.03314",
+              "label": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "mentions": [
+        {
+          "mention": "head is bursting",
+          "golden_cui": "-1",
+          "candidates": [
+            {
+              "name": "head pain",
+              "cui": "4002",
+              "sim": "327.52097",
+              "label": 0
+            },
+            {
+              "name": "pain in head",
+              "cui": "4002",
+              "sim": "326.67664",
+              "label": 0
+            },
+            {
+              "name": "headache",
+              "cui": "4002",
+              "sim": "324.91736",
+              "label": 0
+            },
+            {
+              "name": "observation of nausea",
+              "cui": "7007",
+              "sim": "324.43866",
+              "label": 0
+            },
+            {
+              "name": "ha headache",
+              "cui": "4002",
+              "sim": "324.3364",
+              "label": 0
+            },
+            {
+              "name": "nausea",
+              "cui": "7007",
+              "sim": "322.7198",
+              "label": 0
+            },
+            {
+              "name": "nauseated",
+              "cui": "7007",
+              "sim": "322.41626",
+              "label": 0
+            },
+            {
+              "name": "nauseous",
+              "cui": "7007",
+              "sim": "320.84833",
+              "label": 0
+            },
+            {
+              "name": "pain in the pharynx",
+              "cui": "7003",
+              "sim": "319.139",
+              "label": 0
+            },
+            {
+              "name": "cephalalgia",
+              "cui": "4002",
+              "sim": "318.714",
+              "label": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "mentions": [
+        {
+          "mention": "losing hair",
+          "golden_cui": "-1",
+          "candidates": [
+            {
+              "name": "hair loss disorder",
+              "cui": "7004",
+              "sim": "335.17767",
+              "label": 0
+            },
+            {
+              "name": "alopecia",
+              "cui": "7004",
+              "sim": "330.73563",
+              "label": 0
+            },
+            {
+              "name": "bald",
+              "cui": "7004",
+              "sim": "330.45425",
+              "label": 0
+            },
+            {
+              "name": "baldness",
+              "cui": "7004",
+              "sim": "327.16504",
+              "label": 0
+            },
+            {
+              "name": "nausea",
+              "cui": "7007",
+              "sim": "326.26337",
+              "label": 0
+            },
+            {
+              "name": "observation of nausea",
+              "cui": "7007",
+              "sim": "325.77448",
+              "label": 0
+            },
+            {
+              "name": "nauseated",
+              "cui": "7007",
+              "sim": "324.4199",
+              "label": 0
+            },
+            {
+              "name": "headache",
+              "cui": "4002",
+              "sim": "324.29605",
+              "label": 0
+            },
+            {
+              "name": "head pain",
+              "cui": "4002",
+              "sim": "323.46313",
+              "label": 0
+            },
+            {
+              "name": "cephalgia",
+              "cui": "4002",
+              "sim": "322.5695",
+              "label": 0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

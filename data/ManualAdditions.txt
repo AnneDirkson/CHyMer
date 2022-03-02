@@ -1,0 +1,27 @@
+403638003||acral erythema due to cytotoxic therapy
+403638003||acral erythema due to cytotoxic drugserythrodysaesthesia syndrome
+403638003||palmar plantar erythrodysesthesia due to cytotoxic therapy
+403638003||erythrodysesthesia syndrome
+403638003||palmar plantar erythrodysaesthesia due to cytotoxic therapy
+403638003||palmoplantar erythrodysesthesia due to cytotoxic therapy
+403638003||palmar plantar erythrodysesthesia syndrome
+403638003||palmoplantar erythrodysaesthesia due to cytotoxic therapy
+403638003||hand foot syndrome
+403638003||ppe
+403638003||hfsr
+247566002||hair color change
+247566002||hair colour change
+247566002||hair color changes
+126485001||hives
+49563000||puffy eyes
+49563000||puffiness around the eyes
+49563000||swelling around the eyes
+277797007||thin skin
+277797007||thinning of skin
+247427007||fragile skin
+247427007||delicate skin
+247493001||splits in nails
+247493001||nail splitting
+34887006||madarosis of eyelid
+34887006||loss of eyelashes
+

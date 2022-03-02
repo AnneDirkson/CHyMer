@@ -6,7 +6,7 @@
 # to True.
 
 from biosyn.query_preprocess_inference import QueryPreprocess
-from biosyn.eval import RunNormalizer
+from biosyn.eval_new import RunNormalizer
 import pandas as pd
 from collections import defaultdict
 
@@ -59,7 +59,7 @@ class ADRNormalizer():
                 nw_postid.extend(df.post_id)
                 nw_ent_start.extend(df.ent_start)
                 nw_ent_end.extend(df.ent_end)
-                nw_ent.extend([" ".join(x) for x in list(df.ent)])
+                nw_ent.extend(df.ent)
 
             else:  ##there are composites
                 print(val)
@@ -130,8 +130,10 @@ class ADRNormalizer():
 
 
     def link2ADR(self, results, df):
+        #print(results)
         d = results['queries']
-        df2 = self.adapt_out_to_composite(df, dict_composite)
+        print(df)
+        df2 = self.adapt_out_to_composite(df, self.dict_composite)
 
         out_dict = {}
         out_dict_name = {}
@@ -145,14 +147,32 @@ class ADRNormalizer():
                 out_dict[m] = n
                 out_dict_name[m] = n2
         ##use these dictionaries to normalize the entities
+
+
         normalized_txt = []
         normalized_cui = []
         for k, i in zip(df2.post_id, df2.ent):
-            normalized_cui.append(out_dict[i4])
-            normalized_txt.append(out_dict_name[i4])
+            normalized_cui.append(out_dict[i])
+            normalized_txt.append(out_dict_name[i])
 
         df3 = pd.concat([df2, pd.Series(normalized_cui, name='cui'), pd.Series(normalized_txt, name='syn_cui_text')], axis=1)
         return df3
+
+    def remove_empties(self, dir):
+
+        df = pd.read_csv(dir + 'entities.concept', sep = '\n', header = None)
+
+        df.columns = ['single']
+        x = list(df.single)
+        x2 =[i.split('||') for i in x]
+
+        x3 = [i for i in x2 if len(i[-2]) > 0]
+
+        x4 = ['||'.join(i) for i in x3]
+        nwdf = pd.Series(x4)
+
+        nwdf.to_csv(dir + 'entities.concept', sep = '\n', index = False, header= False)
+
 
     def main(self, df, output_dir1, output_dir2, model_dir, dictionary_path, use_cuda):
 
@@ -160,13 +180,20 @@ class ADRNormalizer():
         self.reformat_data_fornorm(normalized_text, output_dir1)
         input_dir = output_dir1
         QueryPreprocess().main(input_dir, output_dir2)
-        data_dir = output_dir2
-        results = RunNormalizer().main(model_dir, dictionary_path, data_dir, use_cuda, topk = 10)
-        ##link normalization to original df with entities
+        ##remove len =0 cases
 
-        df = df.drop(['ent'])
+        self.remove_empties(output_dir2)
+
+        data_dir = output_dir2
+        results = RunNormalizer().main(model_dir, dictionary_path, data_dir, use_cuda, topk=10)
+        ##link normalization to original df with entities
+        self.dict_composite = self.create_dict_composite(df)
+
+        df = df.drop(['ent'], axis=1)
         df1 = pd.concat([df, pd.Series(normalized_text, name= 'ent')], axis=1)
-        df2 = self.link2ADR(self, results, df1)
+
+
+        df2 = self.link2ADR(results, df1)
 
         ## remove doubles per message
         df3 = df2.drop_duplicates(subset=['post_id', 'cui'], keep='first')

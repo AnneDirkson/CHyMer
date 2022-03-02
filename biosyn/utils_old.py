@@ -55,7 +55,9 @@ def predict_topk(biosyn, eval_dictionary, eval_queries, topk, score_mode='hybrid
     # embed dictionary
     dict_sparse_embeds = biosyn.embed_sparse(names=eval_dictionary[:,0], show_progress=True)
     dict_dense_embeds = biosyn.embed_dense(names=eval_dictionary[:,0], show_progress=True)
-    
+
+    print('Eval queries')
+    #print(len(eval_queries))
     queries = []
     for eval_query in tqdm(eval_queries, total=len(eval_queries)):
         mentions = eval_query[0].replace("+","|").split("|")
@@ -84,17 +86,16 @@ def predict_topk(biosyn, eval_dictionary, eval_queries, topk, score_mode='hybrid
             else:
                 raise NotImplementedError()
 
-            candidate_idxs, topk_score_matrix = biosyn.retrieve_candidate(
+            candidate_idxs = biosyn.retrieve_candidate(
                 score_matrix = score_matrix, 
-                topk = topk, eval = True
+                topk = topk
             )
             np_candidates = eval_dictionary[candidate_idxs].squeeze()
             dict_candidates = []
-            for np_candidate, score in zip(np_candidates, topk_score_matrix[0]):
+            for np_candidate in np_candidates:
                 dict_candidates.append({
                     'name':np_candidate[0],
                     'cui':np_candidate[1],
-                    'sim':str(score),
                     'label':check_label(np_candidate[1],golden_cui)
                 })
             dict_mentions.append({
@@ -128,12 +129,13 @@ def evaluate(biosyn, eval_dictionary, eval_queries, topk, score_mode='hybrid'):
         the number of topk predictions
     score_mode : str
         hybrid, dense, sparse
+
     Returns
     -------
     result : dict
         accuracy and candidates
     """
     result = predict_topk(biosyn,eval_dictionary,eval_queries, topk, score_mode)
-    #result = evaluate_topk_acc(result)
+    # result = evaluate_topk_acc(result)
     
     return result

@@ -1,0 +1,5 @@
+thread_id	post_id	ent_start	ent_end	ent	cui	syn_cui_text	message	linked_drug
+thread_001	post_001	7	7	nauseous	7007	nauseous	['On', '400mg', 'imatinib', 'and', 'I', 'am', 'so', 'nauseous', 'and', 'a', 'throat', 'ache', '.', 'Anyone', 'else', '?']	imatinib
+thread_001	post_001	10	11	throat ache	7003	throat pain	['On', '400mg', 'imatinib', 'and', 'I', 'am', 'so', 'nauseous', 'and', 'a', 'throat', 'ache', '.', 'Anyone', 'else', '?']	imatinib
+thread_001	post_002	2	2	headache	4002	headache	['Such', 'a', 'headache!', 'My', 'head', 'is', 'bursting', '.']	imatinib
+thread_001	post_004	12	13	losing hair	7004	hair loss disorder	['I', 'have', 'been', 'taking', 'Gleevec', 'since', '2005', 'and', 'only', 'now', 'am', 'I', 'losing', 'hair', '.']	gleevec

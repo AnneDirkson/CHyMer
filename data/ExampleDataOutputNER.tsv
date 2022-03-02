@@ -1,6 +1,0 @@
-post_id	thread_id	words	tag
-post_001	thread_001	['On', '400mg', 'imatinib', 'and', 'I', 'am', 'so', 'nauseous', 'and', 'a', 'throat', 'ache', '.', 'Anyone', 'else', '?']	['O', 'O', 'O', 'O', 'O', 'O', 'O', 'B-ADR', 'O', 'O', 'B-ADR', 'I-ADR', 'O', 'O', 'O', 'O']
-post_002	thread_001	['Such', 'a', 'headache!', 'My', 'head', 'is', 'bursting', '.']	['O', 'O', 'B-ADR', 'O', 'B-ADR', 'I-ADR', 'I-ADR', 'O']
-post_003	thread_001	['Bananas', 'are', 'cheaper', 'than', 'ever']	['O', 'O', 'O', 'O', 'O']
-post_004	thread_001	['I', 'have', 'been', 'taking', 'Gleevec', 'since', '2005', 'and', 'only', 'now', 'am', 'I', 'losing', 'hair', '.']	['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'B-ADR', 'I-ADR', 'O']
-post_005	thread_002	['I', 'effing', 'hate', 'taking', 'my', 'meds', '.']	['O', 'O', 'O', 'O', 'O', 'O', 'O']

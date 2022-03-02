@@ -4,9 +4,8 @@ import os
 import json
 from tqdm import tqdm
 from biosyn.utils import evaluate
-from biosyn.data_loader import (
-    DictionaryDataset,
-    QueryDataset)
+from biosyn.data_loader import DictionaryDataset
+from biosyn.data_loader import QueryDataset
 from biosyn.biosyn import BioSyn
 LOGGER = logging.getLogger()
 
@@ -40,7 +39,7 @@ class RunNormalizer():
 #
 #     args = parser.parse_args()
 #     return args
-    
+
     def init_logging(self):
         LOGGER.setLevel(logging.INFO)
         fmt = logging.Formatter('%(asctime)s: [ %(message)s ]',
@@ -63,7 +62,7 @@ class RunNormalizer():
         )
         return dataset
 
-    def main(self, model_dir, dictionary_path, data_dir, use_cuda, topk = 10):
+    def main(self, model_dir, dictionary_path, data_dir, use_cuda, topk=10):
         self.init_logging()
         # print(args)
         # print(use_cuda)
@@ -75,28 +74,30 @@ class RunNormalizer():
             filter_composite=False,
             filter_duplicate=True
         )
-        max_length = 25
-        biosyn = BioSyn().load_model(
-                path=model_dir,
-                max_length=max_length,
-                use_cuda=use_cuda
+        biosyn = BioSyn(
+            max_length=25,
+            use_cuda=use_cuda
+        )
+        biosyn.load_model(
+            model_name_or_path=model_dir,
         )
 
         result_evalset = evaluate(
             biosyn=biosyn,
             eval_dictionary=eval_dictionary,
             eval_queries=eval_queries,
-            topk=topk,
-            score_mode="hybrid"
+            topk=topk
         )
 
-        LOGGER.info("acc@1={}".format(result_evalset['acc1']))
-        LOGGER.info("acc@5={}".format(result_evalset['acc5']))
-
+        #LOGGER.info("acc@1={}".format(result_evalset['acc1']))
+        #LOGGER.info("acc@5={}".format(result_evalset['acc5']))
+        output_dir = './output/Normalized/'
         # if args.save_predictions:
         output_file = os.path.join(output_dir,"predictions_eval.json")
         with open(output_file, 'w') as f:
             json.dump(result_evalset, f, indent=2)
+
+        return result_evalset
 
     # if __name__ == '__main__':
     #     args = parse_args()
