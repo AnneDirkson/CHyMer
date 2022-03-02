@@ -1,5 +1,4 @@
-# CHyMer
-(or Clinical Hypothesis Miner). 
+# CHyMer (or Clinical Hypothesis Miner). 
 
 The goal of this pipeline is to uncover adverse drug responses from patient experiences that are shared online. 
 
