@@ -1,1 +1,4 @@
 
+The excel files contain lists of known ADEs for each of the drugs with the assigned SNOMED concept identifier and the source. 
+
+Extracted_ADE_forum.tsv contains all the extracted ADE (including which drug they are linked to) for each discussion thread and post. The original posts and extracted phrases were omitted to protect patient privacy under the GDPR.
